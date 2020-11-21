@@ -13,7 +13,7 @@ import java.util.List;
 public class VehicleService {
 
     @Autowired
-   private VehicleRepository repo;
+    private VehicleRepository repo;
 
     public List<Vehicle> listAll() {
         return repo.findAll();
