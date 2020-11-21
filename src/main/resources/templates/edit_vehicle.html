@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Vehicle</title>
+</head>
+<body>
+<div align="center">
+    <h1>Edit Vehicle</h1>
+    <br>
+    <form action="/save" th:action="@{/save}" th:object="${vehicle}" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Vehicle ID:</td>
+                <td><input type="text" th:field="*{id}" readonly="readonly"></td>
+            </tr>
+            <tr>
+                <td>Vehicle Brand:</td>
+                <td><input type="text" th:field="*{brand}"></td>
+            </tr>
+            <tr>
+                <td>Vehicle model:</td>
+                <td><input type="text" th:field="*{model}"></td>
+            </tr>
+            <tr>
+                <td>Vehicle carBodyStyle:</td>
+                <td><input type="text" th:field="*{carBodyStyle}"></td>
+            </tr>
+            <tr>
+                <td>Vehicle yearOfManufacture:</td>
+                <td><input type="text" th:field="*{yearOfManufacture}"></td>
+            </tr>
+            <tr>
+                <td>Vehicle color:</td>
+                <td><input type="text" th:field="*{color}"></td>
+            </tr>
+            <tr>
+                <td>Vehicle regNumber:</td>
+                <td><input type="text" th:field="*{regNumber}"></td>
+            </tr>
+            <tr>
+                <td>Vehicle vehicleMileage:</td>
+                <td><input type="text" th:field="*{vehicleMileage}"></td>
+            </tr>
+            <tr>
+                <td>Vehicle status:</td>
+                <td><input type="text" th:field="*{status}"></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="text" th:field="*{pricePerDay}"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
