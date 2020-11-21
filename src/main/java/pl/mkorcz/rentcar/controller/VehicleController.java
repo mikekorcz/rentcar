@@ -19,11 +19,18 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
 
-    @RequestMapping("/")
-    public String viewHomePage(Model model) {
+    @RequestMapping("/show_vehicles")
+    public String showVehicle(Model model) {
         List<Vehicle> listVehicles = vehicleService.listAll();
         model.addAttribute("listVehicles", listVehicles);
-        return "index";
+        return "show_vehicle";
+    }
+
+    @RequestMapping("/about_us")
+    public String aboutUs(Model model) {
+        List<Vehicle> listVehicles = vehicleService.listAll();
+        model.addAttribute("listVehicles", listVehicles);
+        return "about_us";
     }
 
     @RequestMapping("/new")
@@ -33,10 +40,17 @@ public class VehicleController {
         return "new_vehicle";
     }
 
+    @RequestMapping("/contact")
+    public String contact(Model model) {
+        Vehicle vehicle = new Vehicle();
+        model.addAttribute("vehicle", vehicle);
+        return "contact";
+    }
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveVehicle(@ModelAttribute("vehicle") Vehicle vehicle) {
         vehicleService.saveVehicle(vehicle);
-        return "redirect:/";
+        return "redirect:";
     }
 
     @RequestMapping("/edit/{id}")
@@ -50,7 +64,7 @@ public class VehicleController {
     @RequestMapping("/delete/{id}")
     public String deleteVehicle(@PathVariable(name = "id") Long id) {
         vehicleService.delete(id);
-        return "redirect:/";
+        return "redirect:";
     }
 
 }
