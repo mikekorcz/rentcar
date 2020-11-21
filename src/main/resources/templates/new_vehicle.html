@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Vehicle</title>
+</head>
+<body>
+<div align="center">
+    <h1>Create New Vehicle</h1>
+    <br>
+    <form action="#" th:action="@{/save}" th:object="${vehicle}" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Vehicle Brand</td>
+                <td><input type="text" th:field="*{brand}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Vehicle Model</td>
+                <td><input type="text" th:field="*{model}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>CarBodyStyle</td>
+                <td><input type="text" th:field="*{carBodyStyle}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Year of manufacture</td>
+                <td><input type="text" th:field="*{yearOfManufacture}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Color</td>
+                <td><input type="text" th:field="*{color}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Register number</td>
+                <td><input type="text" th:field="*{regNumber}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Vehicle Mileage</td>
+                <td><input type="text" th:field="*{vehicleMileage}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td><input type="text" th:field="*{status}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Price per day</td>
+                <td><input type="text" th:field="*{pricePerDay}"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+
+</body>
+</html>
