@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:fragment="html_head">
+    <meta charset="UTF-8">
+    <title th:include=":: #pageTitle">Layout Generic Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:fragment="navbar">
+    <header id="header">
+        <div class="inner">
+            <a href="/" class="logo">RentCar</a>
+            <nav id="nav">
+                <a href="/about_us">About Us</a>
+                <a href="/show_vehicles">Pokaż pojazdy</a>
+                <a href="/contact">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+</div>
+
+<!-- SHOW VEHICLE -->
+<div th:fragment="show_vehicle">
+    <section>
+        <h1>Vehicle Manager</h1>
+        <a href="/new">Create New Vehicle</a>
+        <div class="table-wrapper">
+            <table class="alt">
+                <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Car body style</th>
+                    <th>Year of manufacture</th>
+                    <th>Color</th>
+                    <th>Register number</th>
+                    <th>Mileage</th>
+                    <th>Status</th>
+                    <th>Price per day</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="vehicle : ${listVehicles}">
+                    <td th:text="${vehicle.id}">Product ID</td>
+                    <td th:text="${vehicle.brand}">Brand</td>
+                    <td th:text="${vehicle.model}">Model</td>
+                    <td th:text="${vehicle.carBodyStyle}">Car body style</td>
+                    <td th:text="${vehicle.yearOfManufacture}">Year of manufacture</td>
+                    <td th:text="${vehicle.color}">Color</td>
+                    <td th:text="${vehicle.regNumber}">Register number</td>
+                    <td th:text="${vehicle.vehicleMileage}">Mileage</td>
+                    <td th:text="${vehicle.status}">Status</td>
+                    <td th:text="${vehicle.pricePerDay}">Price per day</td>
+
+                    <td>
+                        <a th:href="@{'/edit/' + ${vehicle.id}}">Edit</a>
+                        <p>.....</p>
+                        <a th:href="@{'/delete/' + ${vehicle.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<!-- EDIT VEHICLE -->
+<div th:fragment="edit_table">
+    <h1>Edit Vehicle</h1>
+    <br>
+    <div class="table-wrapper">
+
+        <form action="/save" th:action="@{/save}" th:object="${vehicle}" method="post">
+            <table class="alt">
+                <tr>
+                    <td>Vehicle ID:</td>
+                    <td><input type="text" th:field="*{id}" readonly="readonly"></td>
+                </tr>
+                <tr>
+                    <td>Vehicle Brand:</td>
+                    <td><input type="text" th:field="*{brand}"></td>
+                </tr>
+                <tr>
+                    <td>Vehicle model:</td>
+                    <td>
+                        <input type="text" th:field="*{model}"/>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vehicle carBodyStyle:</td>
+                    <td><input type="text" th:field="*{carBodyStyle}"></td>
+                </tr>
+                <tr>
+                    <td>Vehicle yearOfManufacture:</td>
+                    <td><input type="text" th:field="*{yearOfManufacture}"></td>
+                </tr>
+                <tr>
+                    <td>Vehicle color:</td>
+                    <td><input type="text" th:field="*{color}"></td>
+                </tr>
+                <tr>
+                    <td>Vehicle regNumber:</td>
+                    <td><input type="text" th:field="*{regNumber}"></td>
+                </tr>
+                <tr>
+                    <td>Vehicle vehicleMileage:</td>
+                    <td><input type="text" th:field="*{vehicleMileage}"></td>
+                </tr>
+                <tr>
+                    <td>Vehicle status:</td>
+                    <td><input type="text" th:field="*{status}"></td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="text" th:field="*{pricePerDay}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit">Save</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<!-- CREATE VEHICLE -->
+
+<div th:fragment="new_vehicle">
+    <h1>Dodaj pojazd</h1>
+    <br>
+    <div class="table-wrapper">
+        <form action="#" th:action="@{/save}" th:object="${vehicle}" method="post">
+            <table class="alt">
+                <tr>
+                    <td>Vehicle Brand</td>
+                    <td><input type="text" th:field="*{brand}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vehicle Model</td>
+                    <td><input type="text" th:field="*{model}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>CarBodyStyle</td>
+                    <td><input type="text" th:field="*{carBodyStyle}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Year of manufacture</td>
+                    <td><input type="text" th:field="*{yearOfManufacture}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td><input type="text" th:field="*{color}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Register number</td>
+                    <td><input type="text" th:field="*{regNumber}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vehicle Mileage</td>
+                    <td><input type="text" th:field="*{vehicleMileage}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td><input type="text" th:field="*{status}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Price per day</td>
+                    <td><input type="text" th:field="*{pricePerDay}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit">Save</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+
+<!-- FOOTER -->
+<div th:fragment="footer">
+    <section id="footer">
+        <div class="copyright">
+            <p>&copy; RentCar</p>
+        </div>
+
+    </section>
+</div>
+
+</body>
+</html>
