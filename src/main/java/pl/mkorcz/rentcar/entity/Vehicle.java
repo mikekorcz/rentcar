@@ -1,10 +1,5 @@
 package pl.mkorcz.rentcar.entity;
 
-
-import pl.mkorcz.rentcar.enums.CarBodyStyle;
-import pl.mkorcz.rentcar.enums.Colors;
-import pl.mkorcz.rentcar.enums.Status;
-
 import javax.persistence.*;
 
 @Entity(name = "vehicle")
